@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="bdForo" Class="conexionLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-GN58691\MSSQLEXPRESS;Initial Catalog=bdForo;User ID=sa;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="Backend.Properties.Settings" SettingsPropertyName="bdForoConnectionString1" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.SP_INGRESAR_PUBLICACION" Method="SP_INGRESAR_PUBLICACION">
+    <Parameter Name="ID_TEMA" Parameter="iD_TEMA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_USUARIO" Parameter="iD_USUARIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TITULO" Parameter="tITULO" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="MENSAJE" Parameter="mENSAJE" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_OBTENER_PUBLICACIONES" Method="SP_OBTENER_PUBLICACIONES">
+    <ElementType Name="SP_OBTENER_PUBLICACIONESResult">
+      <Column Name="ID_PUBLICACION" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_TEMA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_USUARIO" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TITULO" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MENSAJE" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FECHA_REGISTRO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NOMBRE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="APELLIDOS" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SP_ABRIR_SESION" Method="SP_ABRIR_SESION">
+    <Parameter Name="SESION" Parameter="sESION" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="USUARIO" Parameter="uSUARIO" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ORIGEN" Parameter="oRIGEN" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_INGRESAR_USUARIO" Method="SP_INGRESAR_USUARIO">
+    <Parameter Name="NOMBRE" Parameter="nOMBRE" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="APELLIDOS" Parameter="aPELLIDOS" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="CORREO_ELECTRONICO" Parameter="cORREO_ELECTRONICO" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="PASSWORD" Parameter="pASSWORD" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="NUMEROVERIFICACION" Parameter="nUMEROVERIFICACION" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_ACTIVAR_USUARIO" Method="SP_ACTIVAR_USUARIO">
+    <Parameter Name="CORREO_ELECTRONICO" Parameter="cORREO_ELECTRONICO" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="NUMEROVERIFICACION" Parameter="nUMEROVERIFICACION" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="IDRETURN" Parameter="iDRETURN" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORID" Parameter="eRRORID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ERRORDESCRIPCION" Parameter="eRRORDESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" Direction="InOut" />
+    <Parameter Name="FILASACTUALIZADAS" Parameter="fILASACTUALIZADAS" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_Login" Method="sp_Login">
+    <Parameter Name="CORREO_ELECTRONICO" Parameter="cORREO_ELECTRONICO" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="PASSWORD" Parameter="pASSWORD" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="id_usuario" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="estado" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="nombre" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Parameter Name="apellidos" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_CERRAR_SESION" Method="SP_CERRAR_SESION">
+    <Parameter Name="SESION" Parameter="sESION" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SP_INSERTAR_BITACORA" Method="SP_INSERTAR_BITACORA">
+    <Parameter Name="CLASE" Parameter="cLASE" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="METODO" Parameter="mETODO" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="TIPO" Parameter="tIPO" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="DESCRIPCION" Parameter="dESCRIPCION" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="REQUEST" Parameter="rEQUEST" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="RESPONSE" Parameter="rESPONSE" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
